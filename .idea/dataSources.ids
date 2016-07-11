@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - @localhost" uuid="521228ed-8aa5-4ba3-874e-0c2bc7add0ad">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
+      <schema id="1" name="coches"/>
+    </database-model>
+  </data-source>
+</component>
