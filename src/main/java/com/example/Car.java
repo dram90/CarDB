@@ -20,9 +20,9 @@ public class Car {
     private String model;
     private Integer yearOfFab;
     private String plateNumber;
-    private Integer price;
+    private double price;
 
-    public Car(long id, String brand, String model, Integer yearOfFab, String plateNumber, int price) {
+    public Car(long id, String brand, String model, Integer yearOfFab, String plateNumber, double price) {
         this.id = id;
         this.brand = brand;
         this.model = model;
@@ -74,11 +74,11 @@ public class Car {
         plateNumber = plateNumber;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
