@@ -1,10 +1,6 @@
 package com.example;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.util.Comparator;
+import javax.persistence.*;
 
 /**
  * Created by professor on 11/07/2016.
@@ -21,6 +17,9 @@ public class Car {
     private Integer yearOfFab;
     private String plateNumber;
     private double price;
+    @ManyToOne  //un coche sólo puede pertenecer a una persona
+    private Person owner;
+
 
     public Car(long id, String brand, String model, Integer yearOfFab, String plateNumber, double price) {
         this.id = id;
@@ -80,6 +79,14 @@ public class Car {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public Person getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Person owner) {
+        this.owner = owner;
     }
 
     @Override

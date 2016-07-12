@@ -20,11 +20,13 @@ import java.util.List;
         List<Car> findByBrandAndPrice(String brand, Double price);
         List<Car> findByBrandAndModelAndPriceGreaterThanEqual(String brand, String model, Double price);
         List<Car> findByBrand(String brand);
+        List<Car> findByOwner(Person owner);
+
+
+        //En JPQL
 
         @Query("SELECT AVG(car.price) from Car car WHERE car.brand = :Lexus ")
         Double findAveragePerBrand(@Param("Lexus")String brand);
-
-
 
 
 

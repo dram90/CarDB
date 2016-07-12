@@ -12,6 +12,11 @@ public class CarApplication {
 
 		CarService carService=context.getBean(CarService.class);
 
+		PersonService personaService =context.getBean(PersonService.class);
+
+		personaService.testPeople();
 		carService.testCars();
+
+
 	}
 }

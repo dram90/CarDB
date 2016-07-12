@@ -1,9 +1,8 @@
 package com.example;
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * Created by professor on 11/07/2016.
@@ -15,14 +14,39 @@ public class CarService {
     @Autowired
     private CarRepository carRepository;
 
+    @Autowired
+    private PersonRepository personRepository;
+
+
     public void testCars(){
 
         Car car1= new Car(1L,"Jaguar","TheRoadIsYours",2016,"1234ENG", 61405.00);
+
+        Person person = new Person();
+        person.setName("Alfredo");
+        person.setAge(37);
+        personRepository.save(person);
+
+        car1.setOwner(person);
+
         carRepository.save(car1);
+
+
         Car car2= new Car (2L,"BMW","LoveAtFirstDrive",2014,"9065AME", 75399.00);
+
+        Person noelia = personRepository.findOne(3L);
+        car2.setOwner(noelia);
+
         carRepository.save(car2);
+
         Car car3= new Car (3L,"Lexus","LC500",2016,"5638DDD",85500.00);
+
+        Person david = personRepository.findOne(7L);
+        car3.setOwner(david);
+
         carRepository.save(car3);
+
+
         Car car4= new Car (4L,"Aston Martin","DB10",2015,"3564GER", 3156825.00);
         carRepository.save(car4);
         Car car5= new Car (5L,"RomeoAlfaJulietta","DramaMasterpiece",2013,"4749JAV",66200.00);
@@ -79,7 +103,12 @@ public class CarService {
         int average= sum/numCars;
         */
 
+        System.out.println("List of Jaguar brand cars");
+        System.out.println(carRepository.findByBrand("Jaguar"));
+
         System.out.println("The average price all of Lexus cars is: " +carRepository.findAveragePerBrand("Lexus"));
+
+        System.out.println("The cars of Noelia are " +carRepository.findByOwner(noelia));
 
 
 
