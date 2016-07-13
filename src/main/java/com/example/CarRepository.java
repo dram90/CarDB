@@ -5,10 +5,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.repository.support.DomainClassConverter;
 
+import javax.persistence.Table;
+import java.lang.reflect.Array;
 import java.util.List;
 
 
-    public interface CarRepository extends JpaRepository<Car,Long> {
+public interface CarRepository extends JpaRepository<Car,Long> {
 
         List<Car> findByYearOfFabGreaterThanEqual(Integer yearOfFab);
         List<Car> findByYearOfFabLessThan(Integer yearOfFab);
@@ -57,6 +59,9 @@ import java.util.List;
        //Forma2. Con Spring Data Query
 
         List<Car> findByPlateNumberContains(String plateNumberPart);
+
+        @Query ("SELECT car.brand, AVG(car.price), MIN(car.price), MAX(car.price) FROM Car car GROUP BY car.brand")
+        List <Object[]>  AvgAndMaxAndMinPricesPerBrand();
 
 
 
