@@ -51,6 +51,17 @@ public class PersonService {
         person7.setAge(26);
         personRepository.save(person7);
 
+        Person person8 = new Person();
+        person8.setName("Judith");
+        person8.setSurname("Sala");
+        person8.setAge(25);
+        personRepository.save(person8);
+
+        Person person9 = new Person();
+        person9.setName("Oscar");
+        person9.setAge(25);
+        personRepository.save(person8);
+
 
 
 

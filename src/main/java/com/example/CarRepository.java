@@ -28,6 +28,35 @@ import java.util.List;
         @Query("SELECT AVG(car.price) from Car car WHERE car.brand = :Lexus ")
         Double findAveragePerBrand(@Param("Lexus")String brand);
 
+        @Query("SELECT car FROM Car car WHERE car.owner = :Owner")
+        List<Car> findCarByOwner(@Param("Owner")Person owner);
+
+        @Query("SELECT car FROM Car car WHERE car.owner =:owner AND car.price >=:price")
+        List <Car> findCarByOwnerAndPriceGreaterThan(
+                @Param("owner")Person owner,
+                @Param("price") Double price);
+
+        @Query("SELECT car FROM Car car WHERE car.owner =:owner AND car.price >=:price AND car.yearOfFab  between :minYear and :maxYear")
+       List <Car> findCarByOwnerAndPriceAndRangeYearOFFab (
+                @Param("owner") Person owner,
+                @Param("price") Double price,
+                @Param("minYear") Integer minYear,
+                @Param("maxYear") Integer maxYear );
+
+        @Query ("SELECT car FROM Car car WHERE car.owner.age >=:age")
+        List<Car> findCarListWithOwnersOlderThan(@Param("age") Integer age);
+
+        @Query ("SELECT car FROM Car car WHERE car.owner.age between :minAge and :maxAge")
+        List<Car> findCarListWithOwnersAgeBetween(
+                @Param("minAge") Integer minAge,
+                @Param("maxAge") Integer maxAge);
+
+       @Query ("SELECT car FROM Car car WHERE car.plateNumber LIKE CONCAT('%',:plateNumberPart,'%')")
+        List<Car> findCarByPlateNumberSubstring (@Param("plateNumberPart") String plateNumberPart);
+
+       //Forma2. Con Spring Data Query
+
+        List<Car> findByPlateNumberContains(String plateNumberPart);
 
 
 

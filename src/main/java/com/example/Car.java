@@ -98,7 +98,7 @@ public class Car {
                 ", yearOfFab=" + yearOfFab +
                 ", plateNumber='" + plateNumber + '\'' +
                 ", price=" + price +
-                '}';
+                '}'+System.lineSeparator();
     }
 
     public int compareTo(Car anotherCar){
