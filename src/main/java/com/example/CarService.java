@@ -141,6 +141,8 @@ public class CarService {
 
         System.out.println("All cars wich plate number contains letter 'E' " +carRepository.findByPlateNumberContains("E"));
 
+        System.out.println("Statistics");
+
         List<Object[]> statisticsList = carRepository.AvgAndMaxAndMinPricesPerBrand();
 
         for ( Object[] statistic: statisticsList)
@@ -153,6 +155,16 @@ public class CarService {
 
         // el objeto es cada una de las líneas de la tabla que muestra al hacer la query. statistic[] son las columnas
 
+
+        System.out.println("Number of cars made each year: ");
+
+        List<Object[]> carList = carRepository.CarsMadeByYear();
+
+        for (Object[] car : carList)
+        {
+            System.out.println("Year: "+car[0]);
+            System.out.println("Quantity: "+ car[1]+System.lineSeparator());
+        }
 
 
     }

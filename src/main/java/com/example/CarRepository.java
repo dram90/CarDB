@@ -64,6 +64,8 @@ public interface CarRepository extends JpaRepository<Car,Long> {
         List <Object[]>  AvgAndMaxAndMinPricesPerBrand();
 
 
+        @Query("SELECT car.yearOfFab, COUNT(car) FROM Car car GROUP BY car.yearOfFab")
+        List <Object[]> CarsMadeByYear();
 
     }
 
