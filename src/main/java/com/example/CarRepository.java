@@ -3,14 +3,12 @@ package com.example;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.data.repository.support.DomainClassConverter;
-
-import javax.persistence.Table;
-import java.lang.reflect.Array;
 import java.util.List;
 
 
 public interface CarRepository extends JpaRepository<Car,Long> {
+
+        //Spring Data Querys
 
         List<Car> findByYearOfFabGreaterThanEqual(Integer yearOfFab);
         List<Car> findByYearOfFabLessThan(Integer yearOfFab);
@@ -25,20 +23,22 @@ public interface CarRepository extends JpaRepository<Car,Long> {
         List<Car> findByOwner(Person owner);
 
 
-        //En JPQL
+        //JPQL Querys
 
-        @Query("SELECT AVG(car.price) from Car car WHERE car.brand = :Lexus ")
-        Double findAveragePerBrand(@Param("Lexus")String brand);
+        @Query("SELECT AVG(car.price) from Car car WHERE car.brand = :brand ")
+        Double findAveragePerBrand(@Param("brand")String brand);
 
-        @Query("SELECT car FROM Car car WHERE car.owner = :Owner")
-        List<Car> findCarByOwner(@Param("Owner")Person owner);
+        @Query("SELECT car FROM Car car WHERE car.owner = :owner")
+        List<Car> findCarByOwner(@Param("owner")Person owner);
 
         @Query("SELECT car FROM Car car WHERE car.owner =:owner AND car.price >=:price")
         List <Car> findCarByOwnerAndPriceGreaterThan(
                 @Param("owner")Person owner,
                 @Param("price") Double price);
 
-        @Query("SELECT car FROM Car car WHERE car.owner =:owner AND car.price >=:price AND car.yearOfFab  between :minYear and :maxYear")
+        @Query("SELECT car FROM Car car WHERE car.owner =:owner " +
+                "AND car.price >=:price " +
+                "AND car.yearOfFab  between :minYear AND :maxYear")
        List <Car> findCarByOwnerAndPriceAndRangeYearOFFab (
                 @Param("owner") Person owner,
                 @Param("price") Double price,
@@ -60,11 +60,15 @@ public interface CarRepository extends JpaRepository<Car,Long> {
 
         List<Car> findByPlateNumberContains(String plateNumberPart);
 
-        @Query ("SELECT car.brand, AVG(car.price), MIN(car.price), MAX(car.price) FROM Car car GROUP BY car.brand")
+        @Query ("SELECT car.brand, AVG(car.price), MIN(car.price), MAX(car.price) " +
+                "FROM Car car " +
+                "GROUP BY car.brand")
         List <Object[]>  AvgAndMaxAndMinPricesPerBrand();
 
 
-        @Query("SELECT car.yearOfFab, COUNT(car) FROM Car car GROUP BY car.yearOfFab")
+        @Query("SELECT car.yearOfFab, COUNT(car) " +
+                "FROM Car car " +
+                "GROUP BY car.yearOfFab")
         List <Object[]> CarsMadeByYear();
 
     }
