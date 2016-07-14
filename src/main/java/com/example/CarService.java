@@ -162,8 +162,10 @@ public class CarService {
 
         for (Object[] car : carList)
         {
+            Integer year = (Integer)car[0];
             System.out.println("Year: "+car[0]);
-            System.out.println("Quantity: "+ car[1]+System.lineSeparator());
+            System.out.println("Quantity: "+ car[1]);
+            System.out.println("List of cars: "+carRepository.findByYearOfFab(year)+System.lineSeparator());
         }
 
 

@@ -21,6 +21,7 @@ public interface CarRepository extends JpaRepository<Car,Long> {
         List<Car> findByBrandAndModelAndPriceGreaterThanEqual(String brand, String model, Double price);
         List<Car> findByBrand(String brand);
         List<Car> findByOwner(Person owner);
+        List<Car> findByYearOfFab(Integer yearOfFab);
 
 
         //JPQL Querys
