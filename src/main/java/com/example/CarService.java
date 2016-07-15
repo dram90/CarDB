@@ -142,18 +142,10 @@ public class CarService {
         System.out.println("All cars wich plate number contains letter 'E' " +carRepository.findByPlateNumberContains("E"));
 
         System.out.println("Statistics");
+        showStatistics(carRepository.AvgAndMaxAndMinPricesPerBrand());
 
-        List<Object[]> statisticsList = carRepository.AvgAndMaxAndMinPricesPerBrand();
-
-        for ( Object[] statistic: statisticsList)
-        {
-            System.out.println("Brand: "+statistic[0]);
-            System.out.println("AVG = "+statistic[1] +" euros");
-            System.out.println("MIN = "+statistic[2]+" euros");
-            System.out.println("MAX = "+statistic[3]+" euros"+System.lineSeparator());
-        }
-
-        // el objeto es cada una de las líneas de la tabla que muestra al hacer la query. statistic[] son las columnas
+        System.out.println("Statistics sorted by AvgPrice descendant");
+        showStatistics(carRepository.AvgAndMaxAndMinPricesPerBrandOrderedByAVGPrice());
 
 
         System.out.println("Number of cars made each year: ");
@@ -169,5 +161,17 @@ public class CarService {
         }
 
 
+    }
+
+    private void showStatistics(List<Object[]> statisticsList) {
+        for ( Object[] statistic: statisticsList)
+        {
+            System.out.println("Brand: "+statistic[0]);
+            System.out.println("AVG = "+statistic[1] +" euros");
+            System.out.println("MIN = "+statistic[2]+" euros");
+            System.out.println("MAX = "+statistic[3]+" euros"+System.lineSeparator());
+        }
+
+        // el objeto es cada una de las líneas de la tabla que muestra al hacer la query. statistic[] son las columnas
     }
 }
