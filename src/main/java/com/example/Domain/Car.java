@@ -2,10 +2,6 @@ package com.example.domain;
 
 import javax.persistence.*;
 
-/**
- * Created by professor on 11/07/2016.
- */
-
 @Entity
 public class Car {
 
