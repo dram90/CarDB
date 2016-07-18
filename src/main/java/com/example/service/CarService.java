@@ -9,9 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * Created by professor on 11/07/2016.
- */
 
 @Service
 public class CarService {
