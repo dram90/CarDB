@@ -1,5 +1,7 @@
-package com.example;
+package com.example.repository;
 
+import com.example.domain.Car;
+import com.example.domain.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -9,7 +11,7 @@ import java.util.List;
 
 public interface CarRepository extends JpaRepository<Car, Long> {
 
-    //Spring Data Querys
+    //Spring Data Queries
 
     List<Car> findByYearOfFabGreaterThanEqual(Integer yearOfFab);
 
@@ -36,7 +38,7 @@ public interface CarRepository extends JpaRepository<Car, Long> {
     List<Car> findByYearOfFab(Integer yearOfFab);
 
 
-    //JPQL Querys
+    //JPQL Queries
 
     @Query("SELECT AVG(car.price) from Car car WHERE car.brand = :brand ")
     Double findAveragePerBrand(@Param("brand") String brand);

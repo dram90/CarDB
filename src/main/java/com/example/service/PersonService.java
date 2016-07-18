@@ -1,5 +1,7 @@
-package com.example;
+package com.example.service;
 
+import com.example.domain.Person;
+import com.example.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

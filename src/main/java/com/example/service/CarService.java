@@ -1,7 +1,9 @@
-package com.example;
+package com.example.service;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+import com.example.domain.Car;
+import com.example.domain.Person;
+import com.example.repository.CarRepository;
+import com.example.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
