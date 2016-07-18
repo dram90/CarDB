@@ -5,9 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/**
- * Created by professor on 20/06/2016.
- */
+
 @Entity
 public class Person {
     @Id
